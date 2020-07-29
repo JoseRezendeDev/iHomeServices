@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">iHomeServices</string>
+    <string name="login_hintUsuario">Usuário</string>
+    <string name="login_hintSenha">Senha</string>
+    <string name="login_btnEntrar">ENTRAR</string>
+    <string name="login_btnCadastrar">CADASTRAR</string>
+    <string name="login_txtCadastrar">CADASTRAR</string>
+    <string name="register_lbNome">Nome</string>
+    <string name="register_lbSobrenome">Sobrenome</string>
+    <string name="register_lbOficio">Ofício</string>
+    <string name="register_lbDataDeNascimento">Data de nascimento</string>
+    <string name="register_lbCpf">CPF</string>
+</resources>
