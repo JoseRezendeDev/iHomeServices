@@ -6,52 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
-    <EditText
-        android:id="@+id/txtSobrenome"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="24dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbSobrenome" />
-
     <TextView
-        android:id="@+id/lbSobrenome"
+        android:id="@+id/lbTipoUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="@string/register_lbSobrenome"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNome" />
-
-    <EditText
-        android:id="@+id/txtNome"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="24dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbNome" />
-
-    <TextView
-        android:id="@+id/lbNome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/register_lbNome"
+        android:text="@string/register_lbTipoUsuario"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -68,4 +29,43 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rgTipoUsuario"
+        android:layout_width="343dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbTipoUsuario">
+
+        <RadioButton
+            android:id="@+id/rbTrabalhador"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Trabalhador"
+            android:textSize="22sp" />
+
+        <RadioButton
+            android:id="@+id/rbCliente"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:text="Cliente"
+            android:textSize="22sp" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/flRegister"
+        android:layout_width="412dp"
+        android:layout_height="489dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCadastrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgTipoUsuario">
+
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

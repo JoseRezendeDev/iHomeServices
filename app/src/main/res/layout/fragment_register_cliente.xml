@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frRegisterCliente"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:foregroundGravity="fill_horizontal"
+    tools:context=".RegisterClienteFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/lbNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
+            android:text="@string/register_lbNome"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/txtNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:gravity="clip_vertical"
+            android:inputType="textPersonName"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/lbSobrenome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
+            android:text="@string/register_lbSobrenome"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/txtSobrenome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:gravity="clip_vertical"
+            android:inputType="textPersonName"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/lbTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
+            android:text="@string/register_lbTelefone"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/txtTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:gravity="clip_vertical"
+            android:inputType="textPersonName"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/lbEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
+            android:text="@string/register_lbEmail"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:gravity="clip_vertical"
+            android:inputType="textPersonName"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</FrameLayout>

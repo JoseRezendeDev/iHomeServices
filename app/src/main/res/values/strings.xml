@@ -8,6 +8,11 @@
     <string name="register_lbNome">Nome</string>
     <string name="register_lbSobrenome">Sobrenome</string>
     <string name="register_lbOficio">Ofício</string>
-    <string name="register_lbDataDeNascimento">Data de nascimento</string>
+    <string name="register_lbTipoUsuario">Tipo de usuário</string>
+    <string name="register_lbEmail">Email</string>
+    <string name="register_lbTelefone">Telefone</string>
     <string name="register_lbCpf">CPF</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
