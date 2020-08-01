@@ -12,6 +12,8 @@
     <string name="register_lbEmail">Email</string>
     <string name="register_lbTelefone">Telefone</string>
     <string name="register_lbCpf">CPF</string>
+    <string name="register_rbCliente">Cliente</string>
+    <string name="register_rbTrabalhador">Trabalhador</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

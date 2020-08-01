@@ -7,65 +7,38 @@
     tools:context=".RegisterActivity">
 
     <TextView
-        android:id="@+id/lbTipoUsuario"
+        android:id="@+id/lbCadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/register_lbTipoUsuario"
-        android:textSize="18sp"
+        android:layout_marginTop="18dp"
+        android:text="Cadastro"
+        android:textColor="@color/colorPrimary"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/flRegister"
+        android:layout_width="409dp"
+        android:layout_height="531dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCadastrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbCadastro">
+
+    </FrameLayout>
 
     <Button
         android:id="@+id/btnCadastrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="18dp"
         android:text="@string/login_btnCadastrar"
         android:textSize="22sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/rgTipoUsuario"
-        android:layout_width="343dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbTipoUsuario">
-
-        <RadioButton
-            android:id="@+id/rbTrabalhador"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Trabalhador"
-            android:textSize="22sp" />
-
-        <RadioButton
-            android:id="@+id/rbCliente"
-            android:layout_width="129dp"
-            android:layout_height="wrap_content"
-            android:text="Cliente"
-            android:textSize="22sp" />
-    </RadioGroup>
-
-    <FrameLayout
-        android:id="@+id/flRegister"
-        android:layout_width="412dp"
-        android:layout_height="489dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCadastrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgTipoUsuario">
-
-    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
