@@ -7,21 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ServicesActivity extends AppCompatActivity {
+public class WorkersActivity extends AppCompatActivity {
 
-    private Button btnFakeLista;
+    private Button btnFakeListaWorkers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_services);
+        setContentView(R.layout.activity_workers);
 
-        btnFakeLista = findViewById(R.id.btnFakeLista);
+        btnFakeListaWorkers = findViewById(R.id.btnFakeListaWorkers);
 
-        btnFakeLista.setOnClickListener(new View.OnClickListener() {
+        btnFakeListaWorkers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), WorkersActivity.class);
+                Intent intent = new Intent(getApplicationContext(), WorkerDetailsActivity.class);
 
                 startActivity(intent);
             }

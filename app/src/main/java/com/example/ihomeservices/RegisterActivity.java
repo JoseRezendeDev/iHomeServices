@@ -48,19 +48,11 @@ public class RegisterActivity extends
 
     @Override
     public void onTipoDeUsuarioSelected(int checkedId) {
-        fragmentTransaction = fragmentManager.beginTransaction();
-        switch (checkedId) {
-            case R.id.rbTrabalhador:
-                RegisterTrabalhadorFragment registerTrabalhadorFragment = new RegisterTrabalhadorFragment();
-                fragmentTransaction.replace(R.id.flRegister, registerTrabalhadorFragment);
-                break;
-            case R.id.rbCliente:
-                RegisterClienteFragment registerClienteFragment = new RegisterClienteFragment();
-                fragmentTransaction.replace(R.id.flRegister, registerClienteFragment);
-                break;
+        if (checkedId == R.id.rbTrabalhador) {
+            setRegisterTrabalhadorFragment();
+        } else if (checkedId == R.id.rbCliente) {
+            setRegisterClienteFragment();
         }
-        fragmentTransaction.commit();
-        btnCadastrar.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -74,10 +66,31 @@ public class RegisterActivity extends
         if (fragment instanceof RegisterTipoUsuarioFragment) {
             super.onBackPressed();
         } else {
-            fragmentTransaction = fragmentManager.beginTransaction();
-            RegisterTipoUsuarioFragment registerTipoUsuarioFragment = new RegisterTipoUsuarioFragment();
-            fragmentTransaction.replace(R.id.flRegister, registerTipoUsuarioFragment);
-            fragmentTransaction.commit();
+            setRegisterTipoUsuarioFragment();
         }
+    }
+
+    private void setRegisterTrabalhadorFragment() {
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        RegisterTrabalhadorFragment registerTrabalhadorFragment = new RegisterTrabalhadorFragment();
+        fragmentTransaction.replace(R.id.flRegister, registerTrabalhadorFragment);
+        fragmentTransaction.commit();
+        btnCadastrar.setVisibility(View.VISIBLE);
+    }
+
+    private void setRegisterClienteFragment() {
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        RegisterClienteFragment registerClienteFragment = new RegisterClienteFragment();
+        fragmentTransaction.replace(R.id.flRegister, registerClienteFragment);
+        fragmentTransaction.commit();
+        btnCadastrar.setVisibility(View.VISIBLE);
+    }
+
+    private void setRegisterTipoUsuarioFragment() {
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        RegisterTipoUsuarioFragment registerTipoUsuarioFragment = new RegisterTipoUsuarioFragment();
+        fragmentTransaction.replace(R.id.flRegister, registerTipoUsuarioFragment);
+        fragmentTransaction.commit();
+        btnCadastrar.setVisibility(View.INVISIBLE);
     }
 }
