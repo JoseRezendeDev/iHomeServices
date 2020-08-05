@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".ServicesActivity">
 
-    <Button
-        android:id="@+id/btnFakeLista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PAGINA QUE DEVERIA TER A LISTA DE OFICIOS"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListaOficios"
+        android:layout_width="415dp"
+        android:layout_height="666dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

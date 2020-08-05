@@ -19,9 +19,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="356dp"
-        android:layout_height="245dp"
+        android:layout_width="407dp"
+        android:layout_height="636dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lbNomeSobrenome"
@@ -40,7 +41,7 @@
             android:id="@+id/lbCpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:layout_marginTop="20sp"
             android:text="@string/register_lbCpf"
             android:textSize="22sp" />
@@ -49,7 +50,7 @@
             android:id="@+id/lbEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:layout_marginTop="20sp"
             android:text="@string/register_lbEmail"
             android:textSize="22sp" />
@@ -58,7 +59,7 @@
             android:id="@+id/lbTelefone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:layout_marginTop="20sp"
             android:text="@string/register_lbTelefone"
             android:textSize="22sp" />
@@ -67,43 +68,22 @@
             android:id="@+id/lbFotos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:layout_marginTop="20dp"
-            android:text="Fotos"
+            android:text="@string/workerDetails_fotos"
             android:textSize="22sp" />
-    </LinearLayout>
 
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="360dp"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <TableRow
+        <GridView
+            android:id="@+id/gvFotos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@android:color/background_dark"
-            android:dividerPadding="20sp"
-            android:paddingLeft="10sp"
-            android:paddingTop="20sp"
-            android:paddingEnd="10sp"
-            android:showDividers="middle|beginning|end">
+            android:columnWidth="90dp"
+            android:horizontalSpacing="10dp"
+            android:numColumns="3"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp" />
 
-            <ImageView
-                android:id="@+id/img1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/img2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-    </TableLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
