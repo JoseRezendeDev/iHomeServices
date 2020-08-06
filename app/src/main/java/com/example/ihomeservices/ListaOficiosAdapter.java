@@ -15,9 +15,11 @@ import java.util.List;
 public class ListaOficiosAdapter extends RecyclerView.Adapter {
 
     private List<Oficio> listaOficios;
+    private View.OnClickListener clickListener;
 
-    public ListaOficiosAdapter(List<Oficio> listaOficios) {
+    public ListaOficiosAdapter(List<Oficio> listaOficios, View.OnClickListener clickListener) {
         this.listaOficios = listaOficios;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -25,6 +27,7 @@ public class ListaOficiosAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View itemView = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
+        itemView.setOnClickListener(clickListener);
 
         return new OficioViewHolder(itemView);
     }

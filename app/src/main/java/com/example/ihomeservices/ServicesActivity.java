@@ -1,11 +1,13 @@
 package com.example.ihomeservices;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -80,11 +82,22 @@ public class ServicesActivity extends AppCompatActivity {
 
         rvListaOficios = findViewById(R.id.rvListaOficios);
 
-        listaOficiosAdapter = new ListaOficiosAdapter(listaOficios);
+        View.OnClickListener onListaOficiosClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), WorkersActivity.class);
+
+                startActivity(intent);
+            }
+        };
+
+        listaOficiosAdapter = new ListaOficiosAdapter(listaOficios, onListaOficiosClickListener);
 
         layoutManager = new LinearLayoutManager(this);
 
         rvListaOficios.setLayoutManager(layoutManager);
         rvListaOficios.setAdapter(listaOficiosAdapter);
+        rvListaOficios.setHasFixedSize(true);
+
     }
 }

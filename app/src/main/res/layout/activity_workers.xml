@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".WorkersActivity">
 
-    <Button
-        android:id="@+id/btnFakeListaWorkers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PAGINA QUE DEVERIA TER A LISTA DOS TRABALHADORES DE DETERMINADO OFICIO"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListaTrabalhadores"
+        android:layout_width="413dp"
+        android:layout_height="669dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
