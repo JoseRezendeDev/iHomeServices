@@ -1,5 +1,6 @@
 package com.example.ihomeservices;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,20 +49,29 @@ public class ListaTrabalhadoresAdapter extends RecyclerView.Adapter {
         return trabalhadores.size();
     }
 
-    public static class TrabalhadorViewHolder extends RecyclerView.ViewHolder {
+    public class TrabalhadorViewHolder extends RecyclerView.ViewHolder {
 
         public TextView lbNomeSobrenome;
         public TextView lbPreco;
         public TextView lbAvaliacao;
         public ImageView imgFoto;
 
-        public TrabalhadorViewHolder(@NonNull View itemView) {
+        public TrabalhadorViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             lbNomeSobrenome = itemView.findViewById(R.id.lbNomeSobrenome);
             lbPreco = itemView.findViewById(R.id.lbPreco);
             lbAvaliacao = itemView.findViewById(R.id.lbAvaliacao);
             imgFoto = itemView.findViewById(R.id.imgFoto);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(itemView.getContext(), WorkerDetailsActivity.class);
+                    intent.putExtra("trabalhador", trabalhadores.get(1));
+                    itemView.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }

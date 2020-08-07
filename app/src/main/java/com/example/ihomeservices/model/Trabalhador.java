@@ -1,10 +1,11 @@
 package com.example.ihomeservices.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Trabalhador {
+public class Trabalhador implements Serializable {
     private String nome;
     private String sobrenome;
     private String email;
