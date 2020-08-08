@@ -1,4 +1,4 @@
-package com.example.ihomeservices;
+package com.example.ihomeservices.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+
+import com.example.ihomeservices.R;
 
 import java.util.Arrays;
 import java.util.List;

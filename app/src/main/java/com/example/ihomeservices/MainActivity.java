@@ -12,15 +12,15 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnEntrar;
-    private TextView txtCadastrar;
+    private TextView lbCadastrar;
+    private TextView lbPular;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnEntrar = findViewById(R.id.btnEntrar);
-        txtCadastrar = findViewById(R.id.txtCadastrar);
+        bindInterfaceElements();
 
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        txtCadastrar.setOnClickListener(new View.OnClickListener() {
+        lbCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
@@ -39,5 +39,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        lbPular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ServicesActivity.class);
+
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void bindInterfaceElements() {
+        btnEntrar = findViewById(R.id.btnEntrar);
+        lbCadastrar = findViewById(R.id.lbCadastrar);
+        lbPular = findViewById(R.id.lbPular);
     }
 }

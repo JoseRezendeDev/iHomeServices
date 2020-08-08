@@ -1,89 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".WorkerDetailsActivity">
 
-    <TextView
-        android:id="@+id/lbNomeSobrenome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Nome Sobrenome"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="407dp"
-        android:layout_height="636dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbNomeSobrenome"
-        app:layout_goneMarginBottom="10sp">
-
-        <Spinner
-            android:id="@+id/spOficio"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/lbCpf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="20sp"
-            android:text="@string/register_lbCpf"
-            android:textSize="22sp" />
+            <TextView
+                android:id="@+id/lbNomeSobrenome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="10dp"
+                android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
+                android:text="@string/workerDetails_nomeSobrenome"
+                android:textSize="28sp" />
 
-        <TextView
-            android:id="@+id/lbEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="20sp"
-            android:text="@string/register_lbEmail"
-            android:textSize="22sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/lbTelefone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="20sp"
-            android:text="@string/register_lbTelefone"
-            android:textSize="22sp" />
+                <TextView
+                    android:id="@+id/lbOficio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="24dp"
+                    android:text="@string/workerDetails_oficio"
+                    android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/lbFotos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="20dp"
-            android:text="@string/workerDetails_fotos"
-            android:textSize="22sp" />
+                <Spinner
+                    android:id="@+id/spOficio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
 
-        <GridView
-            android:id="@+id/gvFotos"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:columnWidth="90dp"
-            android:horizontalSpacing="10dp"
-            android:numColumns="3"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="10dp" />
+            <TextView
+                android:id="@+id/lbPreco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
+                android:text="@string/workerDetails_preco"
+                android:textSize="24sp" />
 
+            <TextView
+                android:id="@+id/lbTelefone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
+                android:text="@string/workerDetails_telefone"
+                android:textSize="24sp" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/lbEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
+                android:text="@string/workerDetails_email"
+                android:textSize="24sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/lbAvaliacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
+                android:text="@string/workerDetails_avaliacao"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/lbFotos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
+                android:text="@string/workerDetails_fotos"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <GridView
+        android:id="@+id/gvFotos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

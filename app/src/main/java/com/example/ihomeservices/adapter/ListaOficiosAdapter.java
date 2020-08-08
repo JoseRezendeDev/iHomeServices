@@ -1,4 +1,4 @@
-package com.example.ihomeservices;
+package com.example.ihomeservices.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
