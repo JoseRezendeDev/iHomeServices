@@ -18,7 +18,7 @@
 
             <TextView
                 android:id="@+id/lbNomeSobrenome"
-                android:layout_width="wrap_content"
+                android:layout_width="wrapqq_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|top"
                 android:layout_marginStart="0dp"
@@ -47,6 +47,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:spinnerMode="dropdown" />
+
             </LinearLayout>
 
             <TextView
@@ -104,13 +105,19 @@
                 android:text="@string/workerDetails_fotos"
                 android:textSize="24sp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <GridView
+                    android:id="@+id/gvFotos"
+                    android:layout_width="match_parent"
+                    android:layout_height="380dp" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>
-
-    <GridView
-        android:id="@+id/gvFotos"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -12,7 +12,7 @@
     <string name="register_lbTipoUsuario">Tipo de usuário</string>
     <string name="register_lbEmail">Email</string>
     <string name="register_lbTelefone">Telefone</string>
-    <string name="register_lbCpf">CPF</string>
+    <string name="register_lbPreco">Preço</string>
     <string name="register_rbCliente">Cliente</string>
     <string name="register_rbTrabalhador">Trabalhador</string>
 

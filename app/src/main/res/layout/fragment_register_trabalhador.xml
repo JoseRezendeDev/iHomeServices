@@ -21,7 +21,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/lbNomeSobrenome"
+                android:id="@+id/lbNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -32,7 +32,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/txtNome4"
+                android:id="@+id/txtNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -44,7 +44,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/lbPreco"
+                android:id="@+id/lbSobrenome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -55,7 +55,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/txtSobrenome4"
+                android:id="@+id/txtSobrenome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -78,7 +78,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/txtTelefone4"
+                android:id="@+id/txtTelefone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -101,7 +101,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/txtEmail4"
+                android:id="@+id/txtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -113,18 +113,18 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/lbAvaliacao"
+                android:id="@+id/lbPreco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="30dp"
                 android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
-                android:text="@string/register_lbCpf"
+                android:text="@string/register_lbPreco"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/txtCpf3"
+                android:id="@+id/txtPreco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -132,7 +132,7 @@
                 android:layout_marginEnd="24dp"
                 android:ems="10"
                 android:gravity="clip_vertical"
-                android:inputType="textPersonName"
+                android:inputType="numberDecimal"
                 android:textSize="20sp" />
 
             <TextView
@@ -149,11 +149,12 @@
             <Spinner
                 android:id="@+id/spOficio"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="24dp"
                 android:dropDownWidth="match_parent"
+                android:minHeight="30dp"
                 android:spinnerMode="dropdown" />
         </LinearLayout>
     </ScrollView>
