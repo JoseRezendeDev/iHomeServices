@@ -9,6 +9,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+
+import com.example.ihomeservices.model.Oficio;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -19,7 +29,7 @@ import android.view.ViewGroup;
  * Use the {@link RegisterTrabalhadorFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RegisterTrabalhadorFragment extends Fragment {
+public class RegisterTrabalhadorFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -28,6 +38,7 @@ public class RegisterTrabalhadorFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Spinner spOficio;
 
     private OnFragmentInteractionListener mListener;
 
@@ -66,8 +77,25 @@ public class RegisterTrabalhadorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        View view = inflater.inflate(R.layout.fragment_register_trabalhador, container, false);
+
+        spOficio = view.findViewById(R.id.spOficio);
+        spOficio.setOnItemSelectedListener(this);
+
+        List<Oficio> listaOficios = new ArrayList<Oficio>();
+        listaOficios.add(Oficio.JARDINEIRO);
+        listaOficios.add(Oficio.PEDREIRO);
+        listaOficios.add(Oficio.PINTOR);
+        listaOficios.add(Oficio.PISCINEIRO);
+        listaOficios.add(Oficio.MANICURE);
+        listaOficios.add(Oficio.CABELEIREIRO);
+
+        ArrayAdapter<Oficio> spOficioAdapter = new ArrayAdapter<Oficio>(container.getContext(), android.R.layout.simple_spinner_item, listaOficios);
+
+        spOficio.setAdapter(spOficioAdapter);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_trabalhador, container, false);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -92,6 +120,16 @@ public class RegisterTrabalhadorFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     /**

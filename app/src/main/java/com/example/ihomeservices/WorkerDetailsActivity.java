@@ -15,6 +15,7 @@ import java.text.DecimalFormat;
 public class WorkerDetailsActivity extends AppCompatActivity {
 
     private TextView lbNomeSobrenome;
+    private TextView lbOficio;
     private TextView lbPreco;
     private TextView lbTelefone;
     private TextView lbEmail;
@@ -42,6 +43,7 @@ public class WorkerDetailsActivity extends AppCompatActivity {
         DecimalFormat formatarPreco = new DecimalFormat("#.00");
         DecimalFormat formatarAvaliacao = new DecimalFormat("#.0");
         lbNomeSobrenome.setText(String.format("%s %s", trabalhador.getNome(), trabalhador.getSobrenome()));
+        lbOficio.setText(String.format("%s %s", lbOficio.getText(), trabalhador.getOficio()));
         lbPreco.setText(String.format("%s R$%s", lbPreco.getText(), formatarPreco.format(trabalhador.getPreco())));
         lbTelefone.setText(String.format("%s %s", lbTelefone.getText(), trabalhador.getTelefone()));
         lbEmail.setText(String.format("%s %s", lbEmail.getText(), trabalhador.getEmail()));
@@ -55,6 +57,7 @@ public class WorkerDetailsActivity extends AppCompatActivity {
 
     private void bindInterfaceElements() {
         lbNomeSobrenome = findViewById(R.id.lbNomeSobrenome);
+        lbOficio = findViewById(R.id.lbOficio);
         lbPreco = findViewById(R.id.lbPreco);
         lbTelefone = findViewById(R.id.lbTelefone);
         lbEmail = findViewById(R.id.lbEmail);

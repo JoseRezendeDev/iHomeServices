@@ -18,7 +18,7 @@
 
             <TextView
                 android:id="@+id/lbNomeSobrenome"
-                android:layout_width="wrapqq_content"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|top"
                 android:layout_marginStart="0dp"
@@ -27,28 +27,16 @@
                 android:text="@string/workerDetails_nomeSobrenome"
                 android:textSize="28sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/lbOficio"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/lbOficio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="24dp"
-                    android:text="@string/workerDetails_oficio"
-                    android:textSize="24sp" />
-
-                <Spinner
-                    android:id="@+id/spOficio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:spinnerMode="dropdown" />
-
-            </LinearLayout>
+                android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
+                android:text="@string/workerDetails_oficio"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/lbPreco"
@@ -104,20 +92,13 @@
                 android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
                 android:text="@string/workerDetails_fotos"
                 android:textSize="24sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <GridView
-                    android:id="@+id/gvFotos"
-                    android:layout_width="match_parent"
-                    android:layout_height="380dp" />
-            </LinearLayout>
-
         </LinearLayout>
 
     </ScrollView>
+
+    <GridView
+        android:id="@+id/gvFotos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
