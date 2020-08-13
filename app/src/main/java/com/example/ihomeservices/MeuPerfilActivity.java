@@ -42,7 +42,7 @@ public class MeuPerfilActivity extends AppCompatActivity {
         trabalhador.setTelefone("16991223344");
         trabalhador.setPreco(120.0);
         trabalhador.setOficio(Oficio.PEDREIRO);
-        trabalhador.setAvaliacao(Arrays.asList(4, 5, 5, 4, 4, 4));
+        trabalhador.setNotas(Arrays.asList(4, 5, 5, 4, 4, 4));
         return trabalhador;
     };
 }

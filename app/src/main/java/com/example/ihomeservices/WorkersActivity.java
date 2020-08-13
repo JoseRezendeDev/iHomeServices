@@ -80,7 +80,8 @@ public class WorkersActivity extends AppCompatActivity {
         trabalhador.setTelefone("16991223344");
         trabalhador.setPreco(120.0);
         trabalhador.setOficio(Oficio.PEDREIRO);
-        trabalhador.setAvaliacao(Arrays.asList(4, 5, 5, 4, 4, 4));
+        trabalhador.setNotas(Arrays.asList(4, 3, 5, 2, 4, 4));
+        trabalhador.setComentarios(Arrays.asList("Muito bom", "Adorei o serviço", "Excelente"));
         return trabalhador;
     };
 
@@ -92,7 +93,8 @@ public class WorkersActivity extends AppCompatActivity {
         trabalhador.setTelefone("11988776655");
         trabalhador.setPreco(130.0);
         trabalhador.setOficio(Oficio.PEDREIRO);
-        trabalhador.setAvaliacao(Arrays.asList(4, 2, 2, 1, 1));
+        trabalhador.setNotas(Arrays.asList(4, 3, 5, 1, 1));
+        trabalhador.setComentarios(Arrays.asList("Muito bom", "Adorei o serviço", "Excelente"));
         return trabalhador;
     };
 }

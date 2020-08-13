@@ -23,9 +23,12 @@
     <string name="workerDetails_email">Email:</string>
     <string name="workerDetails_telefone">Telefone:</string>
     <string name="workerDetails_oficio">Ofício:</string>
+    <string name="workerDetails_avaliar">AVALIAR</string>
 
     <string name="menu_miMeuPerfil">Meu Perfil</string>
     <string name="menu_btnConfirmar">CONFIRMAR</string>
+
+    <string name="comentarios_btnAvaliar">PUBLICAR AVALIAÇÃO</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

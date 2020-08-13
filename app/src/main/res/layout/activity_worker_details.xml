@@ -82,16 +82,15 @@
                 android:text="@string/workerDetails_avaliacao"
                 android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/lbFotos"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/btnAvaliar"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="20dp"
-                android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
-                android:text="@string/workerDetails_fotos"
-                android:textSize="24sp" />
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:text="@string/workerDetails_avaliar"
+                android:textSize="20sp" />
+
         </LinearLayout>
 
     </ScrollView>
