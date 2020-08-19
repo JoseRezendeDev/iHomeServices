@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "416094252229",
+    "firebase_url": "https://ihomeservices-a7482.firebaseio.com",
+    "project_id": "ihomeservices-a7482",
+    "storage_bucket": "ihomeservices-a7482.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416094252229:android:6960e4d8e1bb4c037154ac",
+        "android_client_info": {
+          "package_name": "com.example.ihomeservices"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416094252229-j6vureotro8vc96ljks2hap8s7k9u56l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqDsazUO4VgZvz6FzA1H6X9Pz-pbBhvYo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416094252229-j6vureotro8vc96ljks2hap8s7k9u56l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,10 +1,23 @@
 package com.example.ihomeservices.model;
 
 public class Cliente {
+    private int id;
     private String nome;
     private String sobrenome;
     private String email;
     private String telefone;
+
+    public Cliente() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
