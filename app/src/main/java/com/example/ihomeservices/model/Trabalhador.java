@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Trabalhador implements Serializable {
+    private int id;
     private String nome;
     private String sobrenome;
     private String email;
@@ -14,6 +15,14 @@ public class Trabalhador implements Serializable {
     private Oficio oficio;
     private List<Integer> notas = new ArrayList<>();
     private List<String> comentarios = new ArrayList<>();
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -63,7 +72,7 @@ public class Trabalhador implements Serializable {
         this.oficio = oficio;
     }
 
-    public Double getMediaNotas() {
+    public Double calcularMediaNotas() {
         Double soma = 0.0;
         for (Integer nota: notas) {
             soma += nota;

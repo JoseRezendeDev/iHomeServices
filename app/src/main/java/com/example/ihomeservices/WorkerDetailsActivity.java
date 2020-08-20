@@ -60,7 +60,7 @@ public class WorkerDetailsActivity extends AppCompatActivity {
         lbPreco.setText(String.format("%s R$%s", lbPreco.getText(), formatarPreco.format(trabalhador.getPreco())));
         lbTelefone.setText(String.format("%s %s", lbTelefone.getText(), trabalhador.getTelefone()));
         lbEmail.setText(String.format("%s %s", lbEmail.getText(), trabalhador.getEmail()));
-        lbAvaliacao.setText(String.format("%s %s", lbAvaliacao.getText(), formatarAvaliacao.format(trabalhador.getMediaNotas())));
+        lbAvaliacao.setText(String.format("%s %s", lbAvaliacao.getText(), formatarAvaliacao.format(trabalhador.calcularMediaNotas())));
     }
 
     private Trabalhador getTrabalhadorSelecionado() {

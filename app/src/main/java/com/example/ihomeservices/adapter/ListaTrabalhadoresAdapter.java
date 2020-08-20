@@ -44,7 +44,7 @@ public class ListaTrabalhadoresAdapter extends RecyclerView.Adapter {
                     formatarPreco.format(trabalhadores.get(position).getPreco())
             ));
             ((TrabalhadorViewHolder) holder).lbAvaliacao.setText(String.format("%s",
-                    formatarAvaliacao.format(trabalhadores.get(position).getMediaNotas())
+                    formatarAvaliacao.format(trabalhadores.get(position).calcularMediaNotas())
             ));
             ((TrabalhadorViewHolder) holder).imgFoto.setImageResource(getImage(position));
         }

@@ -14,12 +14,19 @@ import android.view.MenuItem;
 import com.example.ihomeservices.adapter.ListaTrabalhadoresAdapter;
 import com.example.ihomeservices.model.Oficio;
 import com.example.ihomeservices.model.Trabalhador;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class WorkersActivity extends AppCompatActivity {
+
+    private DatabaseReference databaseReference;
 
     private RecyclerView rvListaTrabalhadores;
 
@@ -32,20 +39,30 @@ public class WorkersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workers);
 
-        trabalhadores = new ArrayList<>(Arrays.asList(
-                getMockedTrabalhador1(),
-                getMockedTrabalhador2(),
-                getMockedTrabalhador1(),
-                getMockedTrabalhador2(),
-                getMockedTrabalhador1(),
-                getMockedTrabalhador2(),
-                getMockedTrabalhador1(),
-                getMockedTrabalhador2()
-                ));
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        trabalhadores = new ArrayList<>();
+
+        listaTrabalhadoresAdapter = new ListaTrabalhadoresAdapter(trabalhadores);
+
+        DatabaseReference trabalhadorNode = databaseReference.child("trabalhador");
+        trabalhadorNode.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                    trabalhadores.add(dataSnapshot.getValue(Trabalhador.class));
+                }
+                listaTrabalhadoresAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         rvListaTrabalhadores = findViewById(R.id.rvListaTrabalhadores);
 
-        listaTrabalhadoresAdapter = new ListaTrabalhadoresAdapter(trabalhadores);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rvListaTrabalhadores.setLayoutManager(layoutManager);
@@ -71,30 +88,4 @@ public class WorkersActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-    private Trabalhador getMockedTrabalhador1() {
-        Trabalhador trabalhador = new Trabalhador();
-        trabalhador.setNome("Jose");
-        trabalhador.setSobrenome("Rezende");
-        trabalhador.setEmail("jose@gmail.com");
-        trabalhador.setTelefone("16991223344");
-        trabalhador.setPreco(120.0);
-        trabalhador.setOficio(Oficio.PEDREIRO);
-        trabalhador.setNotas(Arrays.asList(4, 3, 5, 2, 4, 4));
-        trabalhador.setComentarios(Arrays.asList("Muito bom", "Adorei o serviço", "Excelente"));
-        return trabalhador;
-    };
-
-    private Trabalhador getMockedTrabalhador2() {
-        Trabalhador trabalhador = new Trabalhador();
-        trabalhador.setNome("Vitor");
-        trabalhador.setSobrenome("Margoto");
-        trabalhador.setEmail("jose@gmail.com");
-        trabalhador.setTelefone("11988776655");
-        trabalhador.setPreco(130.0);
-        trabalhador.setOficio(Oficio.PEDREIRO);
-        trabalhador.setNotas(Arrays.asList(4, 3, 5, 1, 1));
-        trabalhador.setComentarios(Arrays.asList("Muito bom", "Adorei o serviço", "Excelente"));
-        return trabalhador;
-    };
 }

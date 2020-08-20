@@ -3,14 +3,10 @@ package com.example.ihomeservices;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.example.ihomeservices.model.Cliente;
-import com.example.ihomeservices.repository.ClienteRepository;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,21 +21,14 @@ public class MainActivity extends AppCompatActivity {
 
         bindInterfaceElements();
 
+        Mock.popularBancoFirebase();
+
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Cliente cliente = new Cliente();
-                cliente.setId(1);
-                cliente.setNome("Jose");
-                cliente.setSobrenome("Rezende");
-                cliente.setEmail("jose@gmail.com");
-                cliente.setTelefone("999887766");
-                ClienteRepository clienteRepository = new ClienteRepository();
-                clienteRepository.inserirCliente(cliente);
+            public void onClick(View v) {;
+                Intent intent = new Intent(getApplicationContext(), ServicesActivity.class);
 
-//                Intent intent = new Intent(getApplicationContext(), ServicesActivity.class);
-//
-//                startActivity(intent);
+                startActivity(intent);
             }
         });
 
