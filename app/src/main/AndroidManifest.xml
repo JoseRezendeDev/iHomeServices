@@ -14,7 +14,7 @@
         <activity android:name=".WorkerDetailsActivity" />
         <activity android:name=".WorkersActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".ServicesActivity" />
+        <activity android:name=".OficiosActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -30,8 +30,8 @@ public class Mock {
         trabalhador.setTelefone("16991223344");
         trabalhador.setPreco(120.0);
         trabalhador.setOficio(Oficio.PEDREIRO);
-        trabalhador.setNotas(Arrays.asList(4, 3, 5, 2, 4, 4));
-        trabalhador.setComentarios(Arrays.asList("Muito bom", "Adorei o serviço", "Reboque ficou com saliências"));
+        trabalhador.addAvaliacao("Muito bom", 4);
+        trabalhador.addAvaliacao("Adorei o serviço", 5);
         databaseReference.child("trabalhador").child(Integer.toString(trabalhador.getId())).setValue(trabalhador);
     }
 
@@ -44,8 +44,8 @@ public class Mock {
         trabalhador.setTelefone("16911223344");
         trabalhador.setPreco(80.0);
         trabalhador.setOficio(Oficio.JARDINEIRO);
-        trabalhador.setNotas(Arrays.asList(2, 3, 1, 2, 5, 3));
-        trabalhador.setComentarios(Arrays.asList("Regular", "Deixou algumas falhas na grama", "Ótimo trabalho"));
+        trabalhador.addAvaliacao("Ruim", 2);
+        trabalhador.addAvaliacao("Mais ou menos", 3);
         databaseReference.child("trabalhador").child(Integer.toString(trabalhador.getId())).setValue(trabalhador);
     }
 

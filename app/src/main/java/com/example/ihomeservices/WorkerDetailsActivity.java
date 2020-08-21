@@ -27,6 +27,8 @@ public class WorkerDetailsActivity extends AppCompatActivity {
     private GridView gvFotos;
     private ImageGridAdapter imageGridAdapter;
 
+    private Trabalhador trabalhador;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,7 @@ public class WorkerDetailsActivity extends AppCompatActivity {
 
         bindInterfaceElements();
 
-        final Trabalhador trabalhador = getTrabalhadorSelecionado();
+        trabalhador = getTrabalhadorSelecionado();
 
         setWorkerDetailsOnInterfaceElements(trabalhador);
 

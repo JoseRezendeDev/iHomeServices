@@ -13,8 +13,19 @@ public class Trabalhador implements Serializable {
     private String telefone;
     private Double preco;
     private Oficio oficio;
-    private List<Integer> notas = new ArrayList<>();
-    private List<String> comentarios = new ArrayList<>();
+    private List<Avaliacao> avaliacoes = new ArrayList<>();
+
+    public void addAvaliacao(String comentario, Integer nota) {
+        avaliacoes.add(new Avaliacao(comentario, nota));
+    }
+
+    public Double calcularMediaNotas() {
+        Double soma = 0.0;
+        for (Avaliacao avaliacao : avaliacoes) {
+            soma += avaliacao.getNota();
+        }
+        return soma/avaliacoes.size();
+    }
 
     public int getId() {
         return id;
@@ -72,27 +83,11 @@ public class Trabalhador implements Serializable {
         this.oficio = oficio;
     }
 
-    public Double calcularMediaNotas() {
-        Double soma = 0.0;
-        for (Integer nota: notas) {
-            soma += nota;
-        }
-        return soma/notas.size();
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
     }
 
-    public List<Integer> getNotas() {
-        return notas;
-    }
-
-    public void setNotas(List<Integer> notas) {
-        this.notas = notas;
-    }
-
-    public List<String> getComentarios() {
-        return comentarios;
-    }
-
-    public void setComentarios(List<String> comentarios) {
-        this.comentarios = comentarios;
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
     }
 }

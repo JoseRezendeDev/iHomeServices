@@ -37,14 +37,14 @@ public class ListaComentariosAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ComentariosViewHolder) {
-            ((ComentariosViewHolder) holder).lbComentario.setText(trabalhador.getComentarios().get(position));
-            ((ComentariosViewHolder) holder).rbNota.setRating(trabalhador.getNotas().get(position));
+            ((ComentariosViewHolder) holder).lbComentario.setText(trabalhador.getAvaliacoes().get(position).getComentario());
+            ((ComentariosViewHolder) holder).rbNota.setRating(trabalhador.getAvaliacoes().get(position).getNota());
         }
     }
 
     @Override
     public int getItemCount() {
-        return trabalhador.getComentarios().size();
+        return trabalhador.getAvaliacoes().size();
     }
 
     private static class ComentariosViewHolder extends RecyclerView.ViewHolder {

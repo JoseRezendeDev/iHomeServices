@@ -10,10 +10,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
-import com.example.ihomeservices.adapter.ListaTrabalhadoresAdapter;
+import com.example.ihomeservices.adapter.ListaOficiosAdapter;
 import com.example.ihomeservices.model.Oficio;
-import com.example.ihomeservices.model.Trabalhador;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,38 +21,43 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class WorkersActivity extends AppCompatActivity implements OnTrabalhadorClickListener {
+public class OficiosActivity extends AppCompatActivity implements OnOficioClickListener {
 
-    private DatabaseReference databaseReference;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-    private RecyclerView rvListaTrabalhadores;
+    private RecyclerView rvListaOficios;
 
-    private ListaTrabalhadoresAdapter listaTrabalhadoresAdapter;
+    private ListaOficiosAdapter listaOficiosAdapter;
 
-    private List<Trabalhador> trabalhadores;
+    private List<Oficio> listaOficios;
+
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workers);
+        setContentView(R.layout.activity_oficios);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        bindInterfaceElements();
 
-        trabalhadores = new ArrayList<>();
+        listaOficios = new ArrayList<>();
 
-        listaTrabalhadoresAdapter = new ListaTrabalhadoresAdapter(trabalhadores, this);
+        listaOficiosAdapter = new ListaOficiosAdapter(listaOficios, this);
 
-        DatabaseReference trabalhadorNode = databaseReference.child("trabalhador");
-        trabalhadorNode.addValueEventListener(new ValueEventListener() {
+        layoutManager = new LinearLayoutManager(this);
+        rvListaOficios.setLayoutManager(layoutManager);
+        rvListaOficios.setAdapter(listaOficiosAdapter);
+        rvListaOficios.setHasFixedSize(true);
+
+        databaseReference.child("oficio").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                    trabalhadores.add(dataSnapshot.getValue(Trabalhador.class));
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    listaOficios.add(dataSnapshot.getValue(Oficio.class));
                 }
-                listaTrabalhadoresAdapter.notifyDataSetChanged();
+                listaOficiosAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -60,14 +65,10 @@ public class WorkersActivity extends AppCompatActivity implements OnTrabalhadorC
 
             }
         });
+    }
 
-        rvListaTrabalhadores = findViewById(R.id.rvListaTrabalhadores);
-
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        rvListaTrabalhadores.setLayoutManager(layoutManager);
-        rvListaTrabalhadores.setAdapter(listaTrabalhadoresAdapter);
-
+    private void bindInterfaceElements() {
+        rvListaOficios = findViewById(R.id.rvListaOficios);
     }
 
     @Override
@@ -90,10 +91,10 @@ public class WorkersActivity extends AppCompatActivity implements OnTrabalhadorC
     }
 
     @Override
-    public void onTrabalhadorClick(Trabalhador trabalhador) {
-        Intent intent = new Intent(getApplicationContext(), WorkerDetailsActivity.class);
+    public void onOficioClicked(Oficio oficio) {
+        Intent intent = new Intent(getApplicationContext(), WorkersActivity.class);
 
-        intent.putExtra("trabalhador", trabalhador);
+        intent.putExtra("oficio", oficio);
         startActivity(intent);
     }
 }

@@ -39,7 +39,7 @@ public class RegisterActivity extends
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ServicesActivity.class);
+                Intent intent = new Intent(getApplicationContext(), OficiosActivity.class);
 
                 startActivity(intent);
             }
