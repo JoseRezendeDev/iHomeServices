@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ihomeservices.adapter.ImageGridAdapter;
@@ -15,7 +14,7 @@ import com.example.ihomeservices.model.Trabalhador;
 
 import java.text.DecimalFormat;
 
-public class WorkerDetailsActivity extends AppCompatActivity {
+public class TrabalhadorDetalhesActivity extends AppCompatActivity {
 
     private TextView lbNomeSobrenome;
     private TextView lbOficio;
@@ -32,7 +31,7 @@ public class WorkerDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_worker_details);
+        setContentView(R.layout.activity_trabalhador_detalhes);
 
         bindInterfaceElements();
 
@@ -40,7 +39,7 @@ public class WorkerDetailsActivity extends AppCompatActivity {
 
         setWorkerDetailsOnInterfaceElements(trabalhador);
 
-        imageGridAdapter = new ImageGridAdapter(this);
+        imageGridAdapter = new ImageGridAdapter(this, trabalhador);
         gvFotos.setAdapter(imageGridAdapter);
 
         btnAvaliar.setOnClickListener(new View.OnClickListener() {

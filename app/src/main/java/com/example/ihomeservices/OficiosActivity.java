@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.ihomeservices.adapter.ListaOficiosAdapter;
 import com.example.ihomeservices.model.Oficio;
@@ -92,7 +91,7 @@ public class OficiosActivity extends AppCompatActivity implements OnOficioClickL
 
     @Override
     public void onOficioClicked(Oficio oficio) {
-        Intent intent = new Intent(getApplicationContext(), WorkersActivity.class);
+        Intent intent = new Intent(getApplicationContext(), TrabalhadoresActivity.class);
 
         intent.putExtra("oficio", oficio);
         startActivity(intent);

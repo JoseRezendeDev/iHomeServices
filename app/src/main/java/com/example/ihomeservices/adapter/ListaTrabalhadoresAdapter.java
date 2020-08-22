@@ -1,6 +1,5 @@
 package com.example.ihomeservices.adapter;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ihomeservices.OnTrabalhadorClickListener;
 import com.example.ihomeservices.R;
-import com.example.ihomeservices.WorkerDetailsActivity;
 import com.example.ihomeservices.model.Trabalhador;
 
 import java.text.DecimalFormat;
@@ -88,19 +86,19 @@ public class ListaTrabalhadoresAdapter extends RecyclerView.Adapter {
     }
 
     private int getImage(int position) {
-        switch (position % 6) {
-            case 0:
-                return R.drawable.unhas_manicure1;
-            case 1:
-                return R.drawable.unhas_manicure2;
-            case 2:
-                return R.drawable.unhas_manicure3;
-            case 3:
-                return R.drawable.unhas_manicure4;
-            case 4:
-                return R.drawable.unhas_manicure5;
-            case 5:
-                return R.drawable.unhas_manicure6;
+        switch (trabalhadores.get(position).getOficio()) {
+            case PINTOR:
+                return R.drawable.pintor1;
+            case JARDINEIRO:
+                return R.drawable.jardineiro1;
+            case MANICURE:
+                return R.drawable.manicure1;
+            case CABELEIREIRO:
+                return R.drawable.cabeleireiro1;
+            case PEDREIRO:
+                return R.drawable.pedreiro1;
+            case PISCINEIRO:
+                return R.drawable.piscineiro1;
             default:
                 return R.drawable.ic_launcher_background;
         }

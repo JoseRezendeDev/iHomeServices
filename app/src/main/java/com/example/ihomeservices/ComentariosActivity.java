@@ -46,7 +46,7 @@ public class ComentariosActivity extends AppCompatActivity {
         rvComentarios.setAdapter(listaComentariosAdapter);
         rvComentarios.setLayoutManager(layoutManager);
 
-        DatabaseReference trabalhadorNode = databaseReference.child("trabalhador").child(Integer.toString(trabalhador.getId()));
+        DatabaseReference trabalhadorNode = databaseReference.child("trabalhador").child(trabalhador.getId());
         trabalhadorNode.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -63,7 +63,7 @@ public class ComentariosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 trabalhador.addAvaliacao(txtComentario.getText().toString(), Math.round(rbNota.getRating()));
-                databaseReference.child("trabalhador").child(Integer.toString(trabalhador.getId())).setValue(trabalhador);
+                databaseReference.child("trabalhador").child(trabalhador.getId()).setValue(trabalhador);
 
                 txtComentario.setText("");
                 rbNota.setRating(1);

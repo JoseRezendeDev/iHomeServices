@@ -12,7 +12,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.ihomeservices.adapter.ListaTrabalhadoresAdapter;
-import com.example.ihomeservices.model.Oficio;
 import com.example.ihomeservices.model.Trabalhador;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,10 +20,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class WorkersActivity extends AppCompatActivity implements OnTrabalhadorClickListener {
+public class TrabalhadoresActivity extends AppCompatActivity implements OnTrabalhadorClickListener {
 
     private DatabaseReference databaseReference;
 
@@ -37,7 +35,7 @@ public class WorkersActivity extends AppCompatActivity implements OnTrabalhadorC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workers);
+        setContentView(R.layout.activity_trabalhadores);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
@@ -91,7 +89,7 @@ public class WorkersActivity extends AppCompatActivity implements OnTrabalhadorC
 
     @Override
     public void onTrabalhadorClick(Trabalhador trabalhador) {
-        Intent intent = new Intent(getApplicationContext(), WorkerDetailsActivity.class);
+        Intent intent = new Intent(getApplicationContext(), TrabalhadorDetalhesActivity.class);
 
         intent.putExtra("trabalhador", trabalhador);
         startActivity(intent);

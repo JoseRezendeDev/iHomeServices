@@ -8,24 +8,51 @@ import android.widget.ImageView;
 
 
 import com.example.ihomeservices.R;
+import com.example.ihomeservices.model.Trabalhador;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ImageGridAdapter extends BaseAdapter {
 
+    private Trabalhador trabalhador;
     private Context mContext;
 
-    private List<Integer> fotos = Arrays.asList(
-            R.drawable.unhas_manicure1,
-            R.drawable.unhas_manicure2,
-            R.drawable.unhas_manicure3,
-            R.drawable.unhas_manicure4,
-            R.drawable.unhas_manicure5,
-            R.drawable.unhas_manicure6);
+    private List<Integer> fotos = new ArrayList<>();
 
-    public ImageGridAdapter(Context mContext) {
+    public ImageGridAdapter(Context mContext, Trabalhador trabalhador) {
         this.mContext = mContext;
+        this.trabalhador = trabalhador;
+        setFotos();
+    }
+
+    private void setFotos() {
+        switch (trabalhador.getOficio()) {
+            case PINTOR:
+                fotos.add(R.drawable.pintor1);
+                fotos.add(R.drawable.pintor2);
+                break;
+            case JARDINEIRO:
+                fotos.add(R.drawable.jardineiro1);
+                fotos.add(R.drawable.jardineiro2);
+                break;
+            case MANICURE:
+                fotos.add(R.drawable.manicure1);
+                fotos.add(R.drawable.manicure2);
+                break;
+            case CABELEIREIRO:
+                fotos.add(R.drawable.cabeleireiro1);
+                fotos.add(R.drawable.cabeleireiro1);
+                break;
+            case PEDREIRO:
+                fotos.add(R.drawable.pedreiro1);
+                fotos.add(R.drawable.pedreiro2);
+                break;
+            case PISCINEIRO:
+                fotos.add(R.drawable.piscineiro1);
+                fotos.add(R.drawable.piscineiro2);
+                break;
+        }
     }
 
     @Override

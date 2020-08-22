@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Trabalhador implements Serializable {
-    private int id;
+    private String id;
     private String nome;
     private String sobrenome;
     private String email;
@@ -27,11 +27,11 @@ public class Trabalhador implements Serializable {
         return soma/avaliacoes.size();
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

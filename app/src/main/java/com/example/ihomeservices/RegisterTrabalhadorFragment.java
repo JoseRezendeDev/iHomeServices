@@ -1,9 +1,11 @@
 package com.example.ihomeservices;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,10 +13,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
 import com.example.ihomeservices.model.Oficio;
+import com.example.ihomeservices.model.Trabalhador;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,15 +39,15 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class RegisterTrabalhadorFragment extends Fragment implements AdapterView.OnItemSelectedListener {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private EditText txtNome;
+    private EditText txtSobrenome;
+    private EditText txtTelefone;
+    private EditText txtEmail;
+    private EditText txtPreco;
     private Spinner spOficio;
+    private Oficio oficio;
 
     private OnFragmentInteractionListener mListener;
 
@@ -46,31 +55,13 @@ public class RegisterTrabalhadorFragment extends Fragment implements AdapterView
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RegisterTrabalhadorFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static RegisterTrabalhadorFragment newInstance(String param1, String param2) {
-        RegisterTrabalhadorFragment fragment = new RegisterTrabalhadorFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+        return new RegisterTrabalhadorFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -79,23 +70,60 @@ public class RegisterTrabalhadorFragment extends Fragment implements AdapterView
 
         View view = inflater.inflate(R.layout.fragment_register_trabalhador, container, false);
 
-        spOficio = view.findViewById(R.id.spOficio);
+        bindInterfaceElements(view);
+
         spOficio.setOnItemSelectedListener(this);
 
-        List<Oficio> listaOficios = new ArrayList<Oficio>();
-        listaOficios.add(Oficio.JARDINEIRO);
-        listaOficios.add(Oficio.PEDREIRO);
-        listaOficios.add(Oficio.PINTOR);
-        listaOficios.add(Oficio.PISCINEIRO);
-        listaOficios.add(Oficio.MANICURE);
-        listaOficios.add(Oficio.CABELEIREIRO);
-
-        ArrayAdapter<Oficio> spOficioAdapter = new ArrayAdapter<Oficio>(container.getContext(), android.R.layout.simple_spinner_item, listaOficios);
-
+        final List<Oficio> listaOficios = new ArrayList<>();
+        ArrayAdapter<Oficio> spOficioAdapter = new ArrayAdapter<Oficio>(container.getContext(), android.R.layout.simple_spinner_dropdown_item, listaOficios);
         spOficio.setAdapter(spOficioAdapter);
 
-        // Inflate the layout for this fragment
+        DatabaseReference oficioNode = databaseReference.child("oficio");
+        oficioNode.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        listaOficios.add(dataSnapshot.getValue(Oficio.class));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        getActivity().findViewById(R.id.btnCadastrar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Trabalhador trabalhador = new Trabalhador();
+                trabalhador.setNome(txtNome.getText().toString());
+                trabalhador.setSobrenome(txtSobrenome.getText().toString());
+                trabalhador.setTelefone(txtTelefone.getText().toString());
+                trabalhador.setEmail(txtEmail.getText().toString());
+                trabalhador.setPreco(Double.parseDouble(txtPreco.getText().toString()));
+                trabalhador.setOficio(oficio);
+                String id = databaseReference.child("trabalhador").push().getKey();
+                trabalhador.setId(id);
+                databaseReference.child("trabalhador").child(id).setValue(trabalhador);
+
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
+    }
+
+    private void bindInterfaceElements(View view) {
+        txtNome = view.findViewById(R.id.txtNome);
+        txtSobrenome = view.findViewById(R.id.txtSobrenome);
+        txtTelefone = view.findViewById(R.id.txtTelefone);
+        txtEmail = view.findViewById(R.id.txtEmail);
+        txtPreco = view.findViewById(R.id.txtPreco);
+        spOficio = view.findViewById(R.id.spOficio);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -124,7 +152,7 @@ public class RegisterTrabalhadorFragment extends Fragment implements AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        oficio = (Oficio) parent.getItemAtPosition(position);
     }
 
     @Override

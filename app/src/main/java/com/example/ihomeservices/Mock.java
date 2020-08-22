@@ -23,7 +23,6 @@ public class Mock {
 
     private static void setMockedTrabalhador1() {
         Trabalhador trabalhador = new Trabalhador();
-        trabalhador.setId(1);
         trabalhador.setNome("Jose");
         trabalhador.setSobrenome("Rezende");
         trabalhador.setEmail("jose@gmail.com");
@@ -32,12 +31,13 @@ public class Mock {
         trabalhador.setOficio(Oficio.PEDREIRO);
         trabalhador.addAvaliacao("Muito bom", 4);
         trabalhador.addAvaliacao("Adorei o serviço", 5);
-        databaseReference.child("trabalhador").child(Integer.toString(trabalhador.getId())).setValue(trabalhador);
+        String id = databaseReference.child("trabalhador").push().getKey();
+        trabalhador.setId(id);
+        databaseReference.child("trabalhador").child(id).setValue(trabalhador);
     }
 
     private static void setMockedTrabalhador2() {
         Trabalhador trabalhador = new Trabalhador();
-        trabalhador.setId(2);
         trabalhador.setNome("Carlos");
         trabalhador.setSobrenome("Pereira");
         trabalhador.setEmail("carlao@gmail.com");
@@ -46,27 +46,31 @@ public class Mock {
         trabalhador.setOficio(Oficio.JARDINEIRO);
         trabalhador.addAvaliacao("Ruim", 2);
         trabalhador.addAvaliacao("Mais ou menos", 3);
-        databaseReference.child("trabalhador").child(Integer.toString(trabalhador.getId())).setValue(trabalhador);
+        String id = databaseReference.child("trabalhador").push().getKey();
+        trabalhador.setId(id);
+        databaseReference.child("trabalhador").child(id).setValue(trabalhador);
     }
 
     private static void setMockedCliente1() {
         Cliente cliente = new Cliente();
-        cliente.setId(1);
         cliente.setNome("Bruno");
         cliente.setSobrenome("Margoto");
         cliente.setTelefone("16955667788");
         cliente.setEmail("bruno@hotmail.com");
-        databaseReference.child("cliente").child(Integer.toString(cliente.getId())).setValue(cliente);
+        String id = databaseReference.child("cliente").push().getKey();
+        cliente.setId(id);
+        databaseReference.child("cliente").child(id).setValue(cliente);
     }
 
     private static void setMockedCliente2() {
         Cliente cliente = new Cliente();
-        cliente.setId(2);
         cliente.setNome("Felipe");
         cliente.setSobrenome("Rodrigues");
         cliente.setTelefone("19933442211");
         cliente.setEmail("felipe@yahoo.com");
-        databaseReference.child("cliente").child(Integer.toString(cliente.getId())).setValue(cliente);
+        String id = databaseReference.child("cliente").push().getKey();
+        cliente.setId(id);
+        databaseReference.child("cliente").child(id).setValue(cliente);
     }
 
     public static void setOficios() {

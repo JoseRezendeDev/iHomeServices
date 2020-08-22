@@ -10,7 +10,7 @@
         android:layout_width="98dp"
         android:layout_height="119dp"
         android:layout_gravity="start|fill_vertical"
-        app:srcCompat="@drawable/unhas_manicure6" />
+        app:srcCompat="@drawable/manicure1" />
 
     <TextView
         android:id="@+id/lbNomeSobrenome"

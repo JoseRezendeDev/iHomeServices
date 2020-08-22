@@ -11,8 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ComentariosActivity"></activity>
         <activity android:name=".MeuPerfilActivity" />
-        <activity android:name=".WorkerDetailsActivity" />
-        <activity android:name=".WorkersActivity" />
+        <activity android:name=".TrabalhadorDetalhesActivity" />
+        <activity android:name=".TrabalhadoresActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".OficiosActivity" />
         <activity android:name=".MainActivity">

@@ -7,9 +7,10 @@
         android:id="@+id/imageView"
         android:layout_width="190dp"
         android:layout_height="190dp"
+        android:layout_marginBottom="5dp"
         android:maxWidth="200dp"
         android:maxHeight="200dp"
         android:minWidth="150dp"
         android:minHeight="150dp"
-        app:srcCompat="@drawable/unhas_manicure1" />
+        app:srcCompat="@drawable/manicure1" />
 </FrameLayout>
