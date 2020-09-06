@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">iHomeServices</string>
-    <string name="login_hintUsuario">Usuário</string>
+    <string name="login_hintUsuario">Email</string>
     <string name="login_hintSenha">Senha</string>
     <string name="login_btnEntrar">ENTRAR</string>
     <string name="login_lbCadastrar">CADASTRAR</string>
@@ -29,8 +29,4 @@
     <string name="menu_btnConfirmar">CONFIRMAR</string>
 
     <string name="comentarios_btnAvaliar">PUBLICAR AVALIAÇÃO</string>
-
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

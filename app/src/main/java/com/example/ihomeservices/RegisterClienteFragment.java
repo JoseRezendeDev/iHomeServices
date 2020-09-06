@@ -5,16 +5,27 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.ihomeservices.model.Cliente;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Objects;
+import java.util.concurrent.Executor;
 
 
 /**
@@ -27,11 +38,14 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 public class RegisterClienteFragment extends Fragment {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    FirebaseAuth auth = FirebaseAuth.getInstance();
 
     private EditText txtNome;
     private EditText txtSobrenome;
     private EditText txtTelefone;
     private EditText txtEmail;
+    private EditText txtSenha;
+    private Button btnCadastrar;
 
     private OnFragmentInteractionListener mListener;
 
@@ -57,24 +71,38 @@ public class RegisterClienteFragment extends Fragment {
         txtSobrenome = view.findViewById(R.id.txtSobrenome);
         txtTelefone = view.findViewById(R.id.txtTelefone);
         txtEmail = view.findViewById(R.id.txtEmail);
+        txtSenha = view.findViewById(R.id.txtSenha);
+        btnCadastrar = Objects.requireNonNull(getActivity()).findViewById(R.id.btnCadastrar);
 
-        getActivity().findViewById(R.id.btnCadastrar).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Cliente cliente = new Cliente();
-                cliente.setNome(txtNome.getText().toString());
-                cliente.setSobrenome(txtSobrenome.getText().toString());
-                cliente.setTelefone(txtTelefone.getText().toString());
-                cliente.setEmail(txtEmail.getText().toString());
-                String id = databaseReference.child("cliente").push().getKey();
-                cliente.setId(id);
-                databaseReference.child("cliente").child(id).setValue(cliente);
+//        if (btnCadastrar != null) {
+//            btnCadastrar.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    auth.createUserWithEmailAndPassword(txtEmail.getText().toString(), txtSenha.getText().toString())
+//                            .addOnCompleteListener(Objects.requireNonNull(getActivity()), new OnCompleteListener<AuthResult>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<AuthResult> task) {
+//                                    Log.e("AAA", "BBBBBBBBB");
+//                                    if (task.isSuccessful()) {
+////                                    Cliente cliente = new Cliente();
+////                                    cliente.setNome(txtNome.getText().toString());
+////                                    cliente.setSobrenome(txtSobrenome.getText().toString());
+////                                    cliente.setTelefone(txtTelefone.getText().toString());
+////                                    cliente.setEmail(txtEmail.getText().toString());
+////                                    String id = databaseReference.child("cliente").push().getKey();
+////                                    cliente.setId(id);
+////                                    databaseReference.child("cliente").child(id).setValue(cliente);
+//
+//                                        Intent intent = new Intent(getContext(), MainActivity.class);
+//                                        startActivity(intent);
+//                                    }
+//                                }
+//                            });
+//
+//                }
+//            });
 
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
+//        }
         return view;
     }
 

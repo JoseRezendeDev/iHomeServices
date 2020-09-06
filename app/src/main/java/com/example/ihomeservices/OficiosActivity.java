@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import com.example.ihomeservices.adapter.ListaOficiosAdapter;
 import com.example.ihomeservices.model.Oficio;
+import com.example.ihomeservices.model.Trabalhador;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -79,14 +80,26 @@ public class OficiosActivity extends AppCompatActivity implements OnOficioClickL
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.miMeuPerfil:
-                Intent intent = new Intent(getApplicationContext(), MeuPerfilActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.miMeuPerfil) {
+            databaseReference.child("trabalhador").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Trabalhador trabalhador = snapshot.getChildren().iterator().next().getValue(Trabalhador.class);
+
+                    Intent intent = new Intent(getApplicationContext(), MeuPerfilActivity.class);
+                    intent.putExtra("trabalhador", trabalhador);
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        } else {
+            return super.onOptionsItemSelected(item);
         }
+        return true;
     }
 
     @Override
