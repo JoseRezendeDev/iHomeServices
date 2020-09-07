@@ -26,13 +26,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bindInterfaceElements();
+//        int v = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this);
+//        System.out.println(v);
 
-        int v = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this);
-
-        System.out.println(v);
-//VERSAO DO GOOGLE PLAY SERVICES EH 9, TEM QUE SER 10 OU MAIOR
+//        VERSAO DO GOOGLE PLAY SERVICES EH 9, TEM QUE SER 10 OU MAIOR
 //        https://stackoverflow.com/questions/35476182/updating-google-play-services-in-emulator/35496184
+
+        bindInterfaceElements();
 
 //        Mock.popularBancoFirebase();
 

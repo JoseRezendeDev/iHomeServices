@@ -1,5 +1,6 @@
 package com.example.ihomeservices;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,10 +12,18 @@ import android.widget.TextView;
 
 import com.example.ihomeservices.adapter.ImageGridAdapter;
 import com.example.ihomeservices.model.Trabalhador;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public class TrabalhadorDetalhesActivity extends AppCompatActivity {
+
+    DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference();
 
     private TextView lbNomeSobrenome;
     private TextView lbOficio;
@@ -46,8 +55,8 @@ public class TrabalhadorDetalhesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ComentariosActivity.class);
-                intent.putExtra("trabalhador", trabalhador);
 
+                intent.putExtra("idTrabalhador", trabalhador.getId());
                 startActivity(intent);
             }
         });

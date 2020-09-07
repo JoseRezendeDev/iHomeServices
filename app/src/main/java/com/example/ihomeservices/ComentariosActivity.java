@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class ComentariosActivity extends AppCompatActivity {
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -29,6 +32,7 @@ public class ComentariosActivity extends AppCompatActivity {
     private RecyclerView rvComentarios;
     private RecyclerView.Adapter listaComentariosAdapter;
 
+    private String idTrabalhador;
     private Trabalhador trabalhador;
 
     @Override
@@ -38,19 +42,22 @@ public class ComentariosActivity extends AppCompatActivity {
 
         bindInterfaceElements();
 
-        trabalhador = (Trabalhador) getIntent().getExtras().getSerializable("trabalhador");
+        idTrabalhador = (String) getIntent().getExtras().getSerializable("idTrabalhador");
 
-        listaComentariosAdapter = new ListaComentariosAdapter(trabalhador);
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        rvComentarios.setAdapter(listaComentariosAdapter);
-        rvComentarios.setLayoutManager(layoutManager);
-
-        DatabaseReference trabalhadorNode = databaseReference.child("trabalhador").child(trabalhador.getId());
-        trabalhadorNode.addValueEventListener(new ValueEventListener() {
+        databaseReference.child("trabalhador").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listaComentariosAdapter.notifyDataSetChanged();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    if (idTrabalhador.equals(Objects.requireNonNull(dataSnapshot.getValue(Trabalhador.class)).getId())) {
+                        trabalhador = dataSnapshot.getValue(Trabalhador.class);
+
+                        listaComentariosAdapter = new ListaComentariosAdapter(trabalhador);
+
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                        rvComentarios.setAdapter(listaComentariosAdapter);
+                        rvComentarios.setLayoutManager(layoutManager);
+                    }
+                }
             }
 
             @Override
@@ -67,6 +74,8 @@ public class ComentariosActivity extends AppCompatActivity {
 
                 txtComentario.setText("");
                 rbNota.setRating(1);
+
+                listaComentariosAdapter.notifyDataSetChanged();
             }
         });
     }
@@ -76,5 +85,7 @@ public class ComentariosActivity extends AppCompatActivity {
         rbNota = findViewById(R.id.rbNota);
         btnAddComentario = findViewById(R.id.btnAddComentario);
         rvComentarios = findViewById(R.id.rvComentarios);
+
+        txtComentario.requestFocus();
     }
 }

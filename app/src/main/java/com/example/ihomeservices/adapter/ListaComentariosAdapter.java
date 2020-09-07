@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ihomeservices.R;
 import com.example.ihomeservices.model.Trabalhador;
 
-import java.util.List;
-
 public class ListaComentariosAdapter extends RecyclerView.Adapter {
     private Trabalhador trabalhador;
 

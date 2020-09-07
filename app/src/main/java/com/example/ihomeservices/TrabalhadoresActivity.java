@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.ihomeservices.adapter.ListaTrabalhadoresAdapter;
+import com.example.ihomeservices.model.Oficio;
 import com.example.ihomeservices.model.Trabalhador;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class TrabalhadoresActivity extends AppCompatActivity implements OnTrabalhadorClickListener {
 
@@ -39,16 +41,22 @@ public class TrabalhadoresActivity extends AppCompatActivity implements OnTrabal
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
+        final Oficio oficio = (Oficio) getIntent().getExtras().getSerializable("oficio");
+
         trabalhadores = new ArrayList<>();
 
         listaTrabalhadoresAdapter = new ListaTrabalhadoresAdapter(trabalhadores, this);
 
         DatabaseReference trabalhadorNode = databaseReference.child("trabalhador");
-        trabalhadorNode.addValueEventListener(new ValueEventListener() {
+        trabalhadorNode.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Trabalhador trabalhadorCandidato;
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                    trabalhadores.add(dataSnapshot.getValue(Trabalhador.class));
+                    trabalhadorCandidato = dataSnapshot.getValue(Trabalhador.class);
+                    if (oficio == (Objects.requireNonNull(trabalhadorCandidato).getOficio())) {
+                        trabalhadores.add(trabalhadorCandidato);
+                    }
                 }
                 listaTrabalhadoresAdapter.notifyDataSetChanged();
             }

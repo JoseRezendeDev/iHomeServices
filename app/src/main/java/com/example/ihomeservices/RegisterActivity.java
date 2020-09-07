@@ -54,7 +54,7 @@ public class RegisterActivity extends
                                     bindInterfaceElements();
                                 }
                                 else {
-                                    Log.e("UUUUU", "OOOO");
+                                    Log.e("erro:", "ERRO GOOGLE PLAY SERVICES CARLAO");
                                 }
                             }
                         });

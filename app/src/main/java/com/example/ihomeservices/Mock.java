@@ -16,6 +16,9 @@ public class Mock {
     public static void popularBancoFirebase() {
         setMockedTrabalhador1();
         setMockedTrabalhador2();
+        setMockedTrabalhador3();
+        setMockedTrabalhador4();
+        setMockedTrabalhador5();
         setMockedCliente1();
         setMockedCliente2();
         setOficios();
@@ -23,12 +26,12 @@ public class Mock {
 
     private static void setMockedTrabalhador1() {
         Trabalhador trabalhador = new Trabalhador();
-        trabalhador.setNome("Jose");
-        trabalhador.setSobrenome("Rezende");
-        trabalhador.setEmail("jose@gmail.com");
+        trabalhador.setNome("Amanda");
+        trabalhador.setSobrenome("Silva");
+        trabalhador.setEmail("amanda@gmail.com");
         trabalhador.setTelefone("16991223344");
         trabalhador.setPreco(120.0);
-        trabalhador.setOficio(Oficio.PEDREIRO);
+        trabalhador.setOficio(Oficio.MANICURE);
         trabalhador.addAvaliacao("Muito bom", 4);
         trabalhador.addAvaliacao("Adorei o serviço", 5);
         String id = databaseReference.child("trabalhador").push().getKey();
@@ -38,9 +41,53 @@ public class Mock {
 
     private static void setMockedTrabalhador2() {
         Trabalhador trabalhador = new Trabalhador();
-        trabalhador.setNome("Carlos");
-        trabalhador.setSobrenome("Pereira");
-        trabalhador.setEmail("carlao@gmail.com");
+        trabalhador.setNome("Whitney");
+        trabalhador.setSobrenome("Houston");
+        trabalhador.setEmail("whitney@gmail.com");
+        trabalhador.setTelefone("16911223344");
+        trabalhador.setPreco(80.0);
+        trabalhador.setOficio(Oficio.MANICURE);
+        trabalhador.addAvaliacao("Ruim", 2);
+        trabalhador.addAvaliacao("Mais ou menos", 3);
+        String id = databaseReference.child("trabalhador").push().getKey();
+        trabalhador.setId(id);
+        databaseReference.child("trabalhador").child(id).setValue(trabalhador);
+    }
+
+    private static void setMockedTrabalhador3() {
+        Trabalhador trabalhador = new Trabalhador();
+        trabalhador.setNome("Maria");
+        trabalhador.setSobrenome("Bethania");
+        trabalhador.setEmail("maria@gmail.com");
+        trabalhador.setTelefone("16911223344");
+        trabalhador.setPreco(80.0);
+        trabalhador.setOficio(Oficio.MANICURE);
+        trabalhador.addAvaliacao("Ruim", 2);
+        trabalhador.addAvaliacao("Mais ou menos", 3);
+        String id = databaseReference.child("trabalhador").push().getKey();
+        trabalhador.setId(id);
+        databaseReference.child("trabalhador").child(id).setValue(trabalhador);
+    }
+    private static void setMockedTrabalhador4() {
+        Trabalhador trabalhador = new Trabalhador();
+        trabalhador.setNome("Djavan");
+        trabalhador.setSobrenome("Junior");
+        trabalhador.setEmail("djavan@gmail.com");
+        trabalhador.setTelefone("16911223344");
+        trabalhador.setPreco(80.0);
+        trabalhador.setOficio(Oficio.JARDINEIRO);
+        trabalhador.addAvaliacao("Ruim", 2);
+        trabalhador.addAvaliacao("Mais ou menos", 3);
+        String id = databaseReference.child("trabalhador").push().getKey();
+        trabalhador.setId(id);
+        databaseReference.child("trabalhador").child(id).setValue(trabalhador);
+    }
+
+    private static void setMockedTrabalhador5() {
+        Trabalhador trabalhador = new Trabalhador();
+        trabalhador.setNome("Milton");
+        trabalhador.setSobrenome("Nascimento");
+        trabalhador.setEmail("milton@gmail.com");
         trabalhador.setTelefone("16911223344");
         trabalhador.setPreco(80.0);
         trabalhador.setOficio(Oficio.JARDINEIRO);
