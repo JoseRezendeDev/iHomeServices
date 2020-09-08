@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.ihomeservices.adapter.ImageGridAdapter;
@@ -20,6 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
 import java.util.Objects;
+
+import static java.net.Proxy.Type.HTTP;
 
 public class TrabalhadorDetalhesActivity extends AppCompatActivity {
 
@@ -34,6 +38,8 @@ public class TrabalhadorDetalhesActivity extends AppCompatActivity {
     private Button btnAvaliar;
     private GridView gvFotos;
     private ImageGridAdapter imageGridAdapter;
+    private ImageButton imgBtnLigar;
+    private ImageButton imgBtnEnviar;
 
     private Trabalhador trabalhador;
 
@@ -50,6 +56,26 @@ public class TrabalhadorDetalhesActivity extends AppCompatActivity {
 
         imageGridAdapter = new ImageGridAdapter(this, trabalhador);
         gvFotos.setAdapter(imageGridAdapter);
+
+        imgBtnLigar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + trabalhador.getTelefone()));
+                startActivity(intent);
+            }
+        });
+
+        imgBtnEnviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setDataAndType(Uri.parse(trabalhador.getEmail()), "text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "E-mail de cliente do iHomeServices");
+                intent.putExtra(Intent.EXTRA_TEXT, "Olá, sou cliente do iHomeServices, gostaria de saber...");
+                startActivity(Intent.createChooser(intent, "Enviar email..."));
+            }
+        });
 
         btnAvaliar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,5 +113,7 @@ public class TrabalhadorDetalhesActivity extends AppCompatActivity {
         lbAvaliacao = findViewById(R.id.lbAvaliacao);
         btnAvaliar = findViewById(R.id.btnAvaliar);
         gvFotos = findViewById(R.id.gvFotos);
+        imgBtnLigar = findViewById(R.id.imgBtnLigar);
+        imgBtnEnviar = findViewById(R.id.imgBtnEnviar);
     }
 }

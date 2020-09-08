@@ -49,27 +49,67 @@
                 android:text="@string/workerDetails_preco"
                 android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/lbTelefone"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="20dp"
                 android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
-                android:text="@string/workerDetails_telefone"
-                android:textSize="24sp" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/lbEmail"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/lbTelefone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
+                    android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
+                    android:text="@string/workerDetails_telefone"
+                    android:textSize="24sp" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnLigar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="#76FF03"
+                    app:srcCompat="@android:drawable/ic_menu_call" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
                 android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
-                android:text="@string/workerDetails_email"
-                android:textSize="24sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="0dp"
+                    android:foregroundGravity="left|center_vertical|clip_horizontal|center|clip_vertical"
+                    android:text="@string/workerDetails_email"
+                    android:textSize="24sp" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnEnviar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="#00B0FF"
+                    app:srcCompat="@android:drawable/ic_menu_send" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/lbAvaliacao"
