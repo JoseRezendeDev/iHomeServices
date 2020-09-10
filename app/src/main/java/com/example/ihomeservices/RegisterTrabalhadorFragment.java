@@ -13,12 +13,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.Toast;
 
 import com.example.ihomeservices.model.Oficio;
 import com.example.ihomeservices.model.Trabalhador;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -40,14 +47,17 @@ import java.util.List;
  */
 public class RegisterTrabalhadorFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    FirebaseAuth auth = FirebaseAuth.getInstance();
 
     private EditText txtNome;
     private EditText txtSobrenome;
     private EditText txtTelefone;
     private EditText txtEmail;
     private EditText txtPreco;
+    private EditText txtSenha;
     private Spinner spOficio;
     private Oficio oficio;
+    private Button btnCadastrar;
 
     private OnFragmentInteractionListener mListener;
 
@@ -95,22 +105,32 @@ public class RegisterTrabalhadorFragment extends Fragment implements AdapterView
             }
         });
 
-        getActivity().findViewById(R.id.btnCadastrar).setOnClickListener(new View.OnClickListener() {
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Trabalhador trabalhador = new Trabalhador();
-                trabalhador.setNome(txtNome.getText().toString());
-                trabalhador.setSobrenome(txtSobrenome.getText().toString());
-                trabalhador.setTelefone(txtTelefone.getText().toString());
-                trabalhador.setEmail(txtEmail.getText().toString());
-                trabalhador.setPreco(Double.parseDouble(txtPreco.getText().toString()));
-                trabalhador.setOficio(oficio);
-                String id = databaseReference.child("trabalhador").push().getKey();
-                trabalhador.setId(id);
-                databaseReference.child("trabalhador").child(id).setValue(trabalhador);
+                auth.createUserWithEmailAndPassword(txtEmail.getText().toString(), txtSenha.getText().toString())
+                        .addOnCompleteListener(Objects.requireNonNull(getActivity()), new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Trabalhador trabalhador = new Trabalhador();
+                                    trabalhador.setNome(txtNome.getText().toString());
+                                    trabalhador.setSobrenome(txtSobrenome.getText().toString());
+                                    trabalhador.setTelefone(txtTelefone.getText().toString());
+                                    trabalhador.setEmail(txtEmail.getText().toString());
+                                    trabalhador.setPreco(Double.parseDouble(txtPreco.getText().toString()));
+                                    trabalhador.setOficio(oficio);
+                                    String id = databaseReference.child("trabalhador").push().getKey();
+                                    trabalhador.setId(id);
+                                    databaseReference.child("trabalhador").child(id).setValue(trabalhador);
 
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                startActivity(intent);
+                                    Intent intent = new Intent(getContext(), MainActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(getContext(), "Falha no cadastro, altere os dados e tente novamente", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
 
@@ -123,7 +143,9 @@ public class RegisterTrabalhadorFragment extends Fragment implements AdapterView
         txtTelefone = view.findViewById(R.id.txtTelefone);
         txtEmail = view.findViewById(R.id.txtEmail);
         txtPreco = view.findViewById(R.id.txtPreco);
+        txtSenha = view.findViewById(R.id.txtSenha);
         spOficio = view.findViewById(R.id.spOficio);
+        btnCadastrar = Objects.requireNonNull(getActivity()).findViewById(R.id.btnCadastrar);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -41,26 +41,6 @@ public class RegisterActivity extends
         fragmentManager = getSupportFragmentManager();
 
         setInitialTipoUsuarioFragment();
-
-        btnCadastrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                auth.createUserWithEmailAndPassword("jose12345@gmail.com", "aaabbbccc123")
-                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Log.e("Aaaa", "BBBBBBBBBB");
-                                    bindInterfaceElements();
-                                }
-                                else {
-                                    Log.e("erro", "ERRO GOOGLE PLAY SERVICES CARLAO");
-                                }
-                            }
-                        });
-
-            }
-        });
     }
 
     private void bindInterfaceElements() {

@@ -89,10 +89,7 @@ public class TrabalhadoresActivity extends AppCompatActivity implements OnTrabal
             databaseReference.child("trabalhador").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    Trabalhador trabalhador = snapshot.getChildren().iterator().next().getValue(Trabalhador.class);
-
                     Intent intent = new Intent(getApplicationContext(), MeuPerfilActivity.class);
-                    intent.putExtra("trabalhador", trabalhador);
                     startActivity(intent);
                 }
 

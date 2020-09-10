@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import com.example.ihomeservices.adapter.ListaOficiosAdapter;
 import com.example.ihomeservices.model.Oficio;
 import com.example.ihomeservices.model.Trabalhador;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -84,10 +85,7 @@ public class OficiosActivity extends AppCompatActivity implements OnOficioClickL
             databaseReference.child("trabalhador").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    Trabalhador trabalhador = snapshot.getChildren().iterator().next().getValue(Trabalhador.class);
-
                     Intent intent = new Intent(getApplicationContext(), MeuPerfilActivity.class);
-                    intent.putExtra("trabalhador", trabalhador);
                     startActivity(intent);
                 }
 

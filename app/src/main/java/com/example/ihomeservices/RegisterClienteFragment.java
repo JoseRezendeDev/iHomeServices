@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.ihomeservices.model.Cliente;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -74,35 +75,34 @@ public class RegisterClienteFragment extends Fragment {
         txtSenha = view.findViewById(R.id.txtSenha);
         btnCadastrar = Objects.requireNonNull(getActivity()).findViewById(R.id.btnCadastrar);
 
-//        if (btnCadastrar != null) {
-//            btnCadastrar.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    auth.createUserWithEmailAndPassword(txtEmail.getText().toString(), txtSenha.getText().toString())
-//                            .addOnCompleteListener(Objects.requireNonNull(getActivity()), new OnCompleteListener<AuthResult>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<AuthResult> task) {
-//                                    Log.e("AAA", "BBBBBBBBB");
-//                                    if (task.isSuccessful()) {
-////                                    Cliente cliente = new Cliente();
-////                                    cliente.setNome(txtNome.getText().toString());
-////                                    cliente.setSobrenome(txtSobrenome.getText().toString());
-////                                    cliente.setTelefone(txtTelefone.getText().toString());
-////                                    cliente.setEmail(txtEmail.getText().toString());
-////                                    String id = databaseReference.child("cliente").push().getKey();
-////                                    cliente.setId(id);
-////                                    databaseReference.child("cliente").child(id).setValue(cliente);
-//
-//                                        Intent intent = new Intent(getContext(), MainActivity.class);
-//                                        startActivity(intent);
-//                                    }
-//                                }
-//                            });
-//
-//                }
-//            });
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                auth.createUserWithEmailAndPassword(txtEmail.getText().toString(), txtSenha.getText().toString())
+                        .addOnCompleteListener(Objects.requireNonNull(getActivity()), new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Cliente cliente = new Cliente();
+                                    cliente.setNome(txtNome.getText().toString());
+                                    cliente.setSobrenome(txtSobrenome.getText().toString());
+                                    cliente.setTelefone(txtTelefone.getText().toString());
+                                    cliente.setEmail(txtEmail.getText().toString());
+                                    String id = databaseReference.child("cliente").push().getKey();
+                                    cliente.setId(id);
+                                    databaseReference.child("cliente").child(id).setValue(cliente);
 
-//        }
+                                    Intent intent = new Intent(getContext(), MainActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(getContext(), "Falha no cadastro, altere os dados e tente novamente", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+            }
+        });
+
         return view;
     }
 
