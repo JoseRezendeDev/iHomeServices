@@ -45,7 +45,7 @@ import java.util.Objects;
  * Use the {@link RegisterTrabalhadorFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RegisterTrabalhadorFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class RegisterTrabalhadorFragment extends Fragment {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     FirebaseAuth auth = FirebaseAuth.getInstance();
 
@@ -78,29 +78,40 @@ public class RegisterTrabalhadorFragment extends Fragment implements AdapterView
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_register_trabalhador, container, false);
+        final View view = inflater.inflate(R.layout.fragment_register_trabalhador, container, false);
 
         bindInterfaceElements(view);
-
-        spOficio.setOnItemSelectedListener(this);
-
-        final List<Oficio> listaOficios = new ArrayList<>();
-        ArrayAdapter<Oficio> spOficioAdapter = new ArrayAdapter<Oficio>(container.getContext(), android.R.layout.simple_spinner_dropdown_item, listaOficios);
-        spOficio.setAdapter(spOficioAdapter);
 
         DatabaseReference oficioNode = databaseReference.child("oficio");
         oficioNode.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
+                    List<Oficio> listaOficios = new ArrayList<>();
+
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         listaOficios.add(dataSnapshot.getValue(Oficio.class));
                     }
+
+                    ArrayAdapter<Oficio> spOficioAdapter = new ArrayAdapter<Oficio>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, listaOficios);
+                    spOficio.setAdapter(spOficioAdapter);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        spOficio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                oficio = (Oficio) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
@@ -172,15 +183,12 @@ public class RegisterTrabalhadorFragment extends Fragment implements AdapterView
         mListener = null;
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        oficio = (Oficio) parent.getItemAtPosition(position);
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
+//    @Override
+//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//        Toast.makeText(getContext(), "spinner", Toast.LENGTH_SHORT).show();
+//        oficio = (Oficio) parent.getItemAtPosition(position);
+//        spOficio.setSelection(position);
+//    }
 
     /**
      * This interface must be implemented by activities that contain this

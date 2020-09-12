@@ -44,8 +44,9 @@ public class ListaTrabalhadoresAdapter extends RecyclerView.Adapter {
             ((TrabalhadorViewHolder) holder).lbPreco.setText(String.format("R$%s",
                     formatarPreco.format(trabalhadores.get(position).getPreco())
             ));
-            ((TrabalhadorViewHolder) holder).lbAvaliacao.setText(String.format("%s",
-                    formatarAvaliacao.format(trabalhadores.get(position).calcularMediaNotas())
+            Double mediaNotas = trabalhadores.get(position).calcularMediaNotas();
+            ((TrabalhadorViewHolder) holder).lbAvaliacao.setText(mediaNotas == -1.0 ? "Novo" : String.format("%s",
+                    formatarAvaliacao.format(mediaNotas)
             ));
             ((TrabalhadorViewHolder) holder).imgFoto.setImageResource(getImage(position));
             ((TrabalhadorViewHolder) holder).bind(trabalhadores.get(position));

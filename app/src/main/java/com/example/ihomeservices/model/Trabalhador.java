@@ -20,11 +20,15 @@ public class Trabalhador implements Serializable {
     }
 
     public Double calcularMediaNotas() {
-        Double soma = 0.0;
-        for (Avaliacao avaliacao : avaliacoes) {
-            soma += avaliacao.getNota();
+        if (avaliacoes.size() > 0) {
+            Double soma = 0.0;
+            for (Avaliacao avaliacao : avaliacoes) {
+                soma += avaliacao.getNota();
+            }
+            return soma/avaliacoes.size();
+        } else {
+            return -1.0;
         }
-        return soma/avaliacoes.size();
     }
 
     public String getId() {

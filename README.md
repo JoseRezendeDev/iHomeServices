@@ -3,9 +3,10 @@
 Existem dois tipos de usuários: trabalhador e cliente
 
 Login/senha de trabalhador:
-caetano@gmail.com / caetano123
-milton@gmail.com / milton123
-neymarjunior@hotmail.com / neymar123
+(caetano@gmail.com / caetano123)
+(milton@gmail.com / milton123)
+(michael@gmail.com / michael123)
+(neymarjunior@hotmail.com / neymar123)
 
 Login/senha de cliente:
-axl@gmail.com / axl123
+(axl@gmail.com / axl123)

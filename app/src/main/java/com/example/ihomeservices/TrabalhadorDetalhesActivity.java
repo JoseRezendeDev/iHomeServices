@@ -50,12 +50,7 @@ public class TrabalhadorDetalhesActivity extends AppCompatActivity {
 
         bindInterfaceElements();
 
-        trabalhador = getTrabalhadorSelecionado();
-
-        setWorkerDetailsOnInterfaceElements(trabalhador);
-
-        imageGridAdapter = new ImageGridAdapter(this, trabalhador);
-        gvFotos.setAdapter(imageGridAdapter);
+        getTrabalhadorSelecionado();
 
         imgBtnLigar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,16 +87,37 @@ public class TrabalhadorDetalhesActivity extends AppCompatActivity {
         DecimalFormat formatarPreco = new DecimalFormat("#.00");
         DecimalFormat formatarAvaliacao = new DecimalFormat("#.0");
         lbNomeSobrenome.setText(String.format("%s %s", trabalhador.getNome(), trabalhador.getSobrenome()));
-        lbOficio.setText(String.format("%s %s", lbOficio.getText(), trabalhador.getOficio()));
-        lbPreco.setText(String.format("%s R$%s", lbPreco.getText(), formatarPreco.format(trabalhador.getPreco())));
-        lbTelefone.setText(String.format("%s %s", lbTelefone.getText(), trabalhador.getTelefone()));
-        lbEmail.setText(String.format("%s %s", lbEmail.getText(), trabalhador.getEmail()));
-        lbAvaliacao.setText(String.format("%s %s", lbAvaliacao.getText(), formatarAvaliacao.format(trabalhador.calcularMediaNotas())));
+        lbOficio.setText(String.format("Ofício: %s", trabalhador.getOficio()));
+        lbPreco.setText(String.format("Preço: R$%s", formatarPreco.format(trabalhador.getPreco())));
+        lbTelefone.setText(String.format("Telefone: %s", trabalhador.getTelefone()));
+        lbEmail.setText(String.format("Email: %s", trabalhador.getEmail()));
+        Double mediaNotas = trabalhador.calcularMediaNotas();
+        lbAvaliacao.setText(String.format("Avaliação: %s", mediaNotas == -1.0 ? "Novo" : formatarAvaliacao.format(mediaNotas)));
     }
 
-    private Trabalhador getTrabalhadorSelecionado() {
+    private void getTrabalhadorSelecionado() {
         Bundle bundle = getIntent().getExtras();
-        return (Trabalhador) bundle.getSerializable("trabalhador");
+        final Trabalhador trabalhadorSelecionado = (Trabalhador) bundle.getSerializable("trabalhador");
+
+        firebaseDatabase.child("trabalhador").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    if (trabalhadorSelecionado.getId().equals(dataSnapshot.getValue(Trabalhador.class).getId())) {
+                        trabalhador = dataSnapshot.getValue(Trabalhador.class);
+                        setWorkerDetailsOnInterfaceElements(trabalhador);
+
+                        imageGridAdapter = new ImageGridAdapter(getApplicationContext(), trabalhador);
+                        gvFotos.setAdapter(imageGridAdapter);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void bindInterfaceElements() {
